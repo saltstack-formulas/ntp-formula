@@ -1,6 +1,7 @@
 include:
   - ntp
 
-ntpd:
-  service.running:
-    - enable: True
+extend:
+  /etc/ntp.conf:
+    file.managed:
+      - source: salt://ntp/files/ntp.conf

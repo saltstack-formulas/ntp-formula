@@ -1,6 +1,16 @@
 ntp:
   pkg.installed
 
-/etc/ntpd.conf:
+/etc/ntp.conf:
   file.managed:
-    - source: salt://ntp/ntpd.conf
+    - source: salt://ntp/files/ntp-client.conf
+    - require:
+      - pkg: ntp
+
+ntpd:
+  service.running:
+    - enable: True
+    - require:
+      - pkg: ntp
+    - watch:
+      - file: /etc/ntp.conf
