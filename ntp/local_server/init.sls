@@ -41,7 +41,7 @@ ntpd:
     - group: root
     - mode: '0440'
     - template: jinja
-    - source: salt://ntp/files/ntp.CentOS.{{ grains['osrelease'][0] }}.conf
+    - source: salt://ntp/local_server/files/ntp.CentOS.{{ grains['osrelease'][0] }}.conf
     - defaults:
         comment: "{{ pillar['ntp']['comment'] }}"
         localnetworks: {{ pillar['ntp']['localnetworks'] }}

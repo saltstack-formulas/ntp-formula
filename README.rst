@@ -24,3 +24,12 @@ Installs the ntp package, and optionally, a basic config.
 --------------
 
 Installs the ntp server, an optional server config, and starts the ntp server.
+
+``ntp.local_server``
+--------------------
+
+This forumula uses pillar data to determine if the server is an internal NTP
+server or a local server that syncs to the internal NTP server and will write
+the ntp.conf file accordingly.
+
+Requires CentOS 5.X or CentOS 6.X.
