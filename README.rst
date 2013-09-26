@@ -2,21 +2,25 @@
 ntp
 ===
 
-This formula exposes three formulas:
+Formulas to set up and configure the ntp client or server.
 
-formula1: ntp
-=============
+.. note::
 
-The ntp formula installs the ntp package, a basic config, and starts the server
+    See the full `Salt Formulas installation and usage instructions
+    <http://docs.saltstack.com/topics/conventions/formulas.html>`_.
 
-formula1: ntp.server
-====================
+Available states
+================
 
-Installs the ntp server, a server config, and starts the ntp server
+.. contents::
+    :local:
 
-formula2: ntp
-=============
+``ntp``
+-------
 
-More advanced example for CentOS 5.X and CentOS 6.X. This forumula uses pillar data to determine
-if the server is an internal NTP server or a local server that syncs to the internal NTP server
-and will write the ntp.conf file accordingly
+Installs the ntp package, and optionally, a basic config.
+
+``ntp.server``
+--------------
+
+Installs the ntp server, an optional server config, and starts the ntp server.
