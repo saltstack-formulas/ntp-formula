@@ -17,6 +17,15 @@
         'ntp_conf': '/etc/ntp.conf',
         'ntpd_conf': '/etc/ntpd.conf',
     },
+    'Suse': {
+        'client': 'ntp',
+        'server': 'ntp',
+        'service': 'ntp',
+        'ntpdate': 'ntpdate',
+
+        'ntp_conf': '/etc/ntp.conf',
+        'ntpd_conf': '/etc/ntpd.conf',
+    },
 } %}
 
 {% if grains.get('saltversion', '').startswith('0.17') %}
