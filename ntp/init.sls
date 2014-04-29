@@ -12,6 +12,7 @@ ntpd_conf:
   file:
     - managed
     - name: {{ ntp.ntp_conf }}
+    - template: jinja
     - source: {{ salt['pillar.get']('ntp:ntp_conf', 'salt://ntp/ntp-client.conf') }}
     - require:
       - pkg: ntp
