@@ -33,3 +33,10 @@ server or a local server that syncs to the internal NTP server and will write
 the ntp.conf file accordingly.
 
 Requires CentOS 5.X or CentOS 6.X.
+
+``ntp.ng``
+----------
+
+This state is a re-implementation of the original NTP formula. As a state, ``ntp.ng`` controls both the client and server through pillar parameters. This formula does not require that a configuration file be served directly and instead fully exposes all ntp configuration parameters as set in the pillar.
+
+**Note:** ``ntp.ng`` relies upon some conventions first available in the *Helium* release.
