@@ -8,7 +8,7 @@ ntp:
     - name: {{ ntp.client }}
 
 {% if salt['pillar.get']('ntp:ntp_conf') %}
-ntpd_conf:
+ntp_conf:
   file:
     - managed
     - name: {{ ntp.ntp_conf }}
