@@ -3,12 +3,14 @@
 include:
   - ntp
 
-{% if salt['pillar.get']('ntp:ntpd_conf') %}
+{% set ntpd_conf_src = salt['pillar.get']('ntp:ntpd_conf') -%}
+
+{% if ntpd_conf_src %}
 ntpd_conf:
   file:
     - managed
     - name: {{ ntp.ntpd_conf }}
-    - source: {{ salt['pillar.get']('ntp:ntpd_conf', 'salt://ntp/ntp.conf') }}
+    - source: {{ ntpd_conf_src }}
     - require:
       - pkg: ntp
 {% endif %}
@@ -20,7 +22,7 @@ ntpd:
     - enable: True
     - require:
       - pkg: ntp
-{% if salt['pillar.get']('ntp:ntpd_conf') %}
+{% if ntpd_conf_src %}
     - watch:
       - file: ntpd_conf
 {% endif %}
