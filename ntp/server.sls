@@ -8,7 +8,7 @@ ntpd_conf:
   file:
     - managed
     - name: {{ ntp.ntpd_conf }}
-    - source: {{ salt['pillar.get']('npt:ntpd_conf', 'salt://ntp/ntp.conf') }}
+    - source: {{ salt['pillar.get']('ntp:ntpd_conf', 'salt://ntp/ntp.conf') }}
     - require:
       - pkg: ntp
 {% endif %}
