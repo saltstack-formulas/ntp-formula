@@ -27,5 +27,5 @@ ntpd:
     - require:
       - pkg: ntp
     - watch:
-      - file: {{ ntp.lookup.ntp_conf }}
+      - file: ntpd_conf
 {% endif %}
