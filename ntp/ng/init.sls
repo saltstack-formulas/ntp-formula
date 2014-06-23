@@ -4,14 +4,12 @@
 {% set service = {True: 'running', False: 'dead'} %}
 
 ntp:
-  pkg:
-    - installed
+  pkg.installed:
     - name: {{ ntp.lookup.package }}
 
 {% if 'ntp_conf' in ntp.lookup %}
 ntpd_conf:
-  file:
-    - managed
+  file.managed:
     - name: {{ ntp.lookup.ntp_conf }}
     - source: salt://ntp/files/ntp.conf
     - template: jinja
@@ -23,12 +21,11 @@ ntpd_conf:
 
 {% if 'ntpd' in ntp.settings %}
 ntpd:
-  service:
-    - {{ service.get(ntp.settings.ntpd) }}
+  service.{{ service.get(ntp.settings.ntpd) }}:
     - name: {{ ntp.lookup.service }}
     - enable: {{ ntp.settings.ntpd }}
     - require:
       - pkg: ntp
     - watch:
-      - file {{ ntp.lookup.ntp_conf }}
+      - file: {{ ntp.lookup.ntp_conf }}
 {% endif %}
