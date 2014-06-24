@@ -46,3 +46,33 @@ ntp:
   {% endif %}
 
   {% endif %}
+
+# NTP NG example
+ntp:
+  # An arbitrary key to avoid clashes with the original configuration
+  ng:
+    # OS-specific data that should, in most cases, be handled by map.jinja.
+    # It is an optional key and is only used to override defaults.
+    lookup:
+      package: ntp
+      service: ntpd
+      ntp_conf: /etc/ntp.conf
+    # State-specific options
+    settings:
+      # If `True`, ntpd will be enabled. Otherwise ntp.conf will be configured
+      # but ntpd will not be enabled or started.
+      ntpd: True
+      # A dictionary of lists, each key corresponds to a conf-file directive in
+      # ntp.conf. Eg, the below will compile to:
+      #
+      #     servers 0.us.pool.ntp.org
+      #     servers 1.us.pool.ntp.org
+      #
+      #     restrict 127.0.0.1
+      #     restrict ::1
+      #
+      #     driftile: /var/lib/ntp/ntp.drift
+      ntp_conf:
+        servers: ['0.us.pool.ntp.org', '1.us.pool.ntp.org']
+        restrict: ['127.0.0.1', '::1']
+        driftfile: ['/var/lib/ntp/ntp.drift']
