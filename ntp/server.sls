@@ -7,8 +7,7 @@ include:
 
 {% if ntpd_conf_src %}
 ntpd_conf:
-  file:
-    - managed
+  file.managed:
     - name: {{ ntp.ntpd_conf }}
     - source: {{ ntpd_conf_src }}
     - require:
@@ -16,8 +15,7 @@ ntpd_conf:
 {% endif %}
 
 ntpd:
-  service:
-    - running
+  service.running:
     - name: {{ ntp.service }}
     - enable: True
     - require:
