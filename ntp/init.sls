@@ -3,16 +3,14 @@
 {% from "ntp/map.jinja" import ntp with context %}
 
 ntp:
-  pkg:
-    - installed
+  pkg.installed:
     - name: {{ ntp.client }}
 
 {% set ntp_conf_src = salt['pillar.get']('ntp:ntp_conf') -%}
 
 {% if ntp_conf_src %}
 ntp_conf:
-  file:
-    - managed
+  file.managed:
     - name: {{ ntp.ntp_conf }}
     - template: jinja
     - source: {{ ntp_conf_src }}
