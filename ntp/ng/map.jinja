@@ -12,7 +12,7 @@
         },
         'Suse': {
             'package': 'ntp',
-            'service': 'ntp',
+            'service': 'ntpd',
             'ntp_conf': '/etc/ntp.conf'
         },
     }, merge=salt['pillar.get']('ntp:ng:lookup')),
