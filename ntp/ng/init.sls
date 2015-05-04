@@ -3,9 +3,11 @@
 {% from "ntp/ng/map.jinja" import ntp with context %}
 {% set service = {True: 'running', False: 'dead'} %}
 
+{% if 'package' in ntp.lookup %}
 ntp:
   pkg.installed:
     - name: {{ ntp.lookup.package }}
+{% endif %}
 
 {% if 'ntp_conf' in ntp.lookup %}
 ntpd_conf:
@@ -15,8 +17,10 @@ ntpd_conf:
     - template: jinja
     - context:
       config: {{ ntp.settings.ntp_conf }}
+    {% if 'package' in ntp.lookup %}
     - require:
       - pkg: ntp
+    {% endif %}
 {% endif %}
 
 {% if 'ntpd' in ntp.settings %}
@@ -24,8 +28,10 @@ ntpd:
   service.{{ service.get(ntp.settings.ntpd) }}:
     - name: {{ ntp.lookup.service }}
     - enable: {{ ntp.settings.ntpd }}
+    {% if 'package' in ntp.lookup %}
     - require:
       - pkg: ntp
+    {% endif %}
     - watch:
       - file: ntpd_conf
 {% endif %}
