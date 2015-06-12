@@ -5,7 +5,7 @@
 {% set ntp = {
     'lookup': salt['grains.filter_by']({
         'Arch': {
-            'package: 'ntp',
+            'package': 'ntp',
             'service': 'ntpd',
             'ntp_conf': '/etc/ntp.conf'
         },
