@@ -4,6 +4,11 @@
       else '/var/lib/ntp/ntp.drift' %}
 {% set ntp = {
     'lookup': salt['grains.filter_by']({
+        'Arch': {
+            'package: 'ntp',
+            'service': 'ntpd',
+            'ntp_conf': '/etc/ntp.conf'
+        },
         'Debian': {
             'package': 'ntp',
             'service': 'ntp',
