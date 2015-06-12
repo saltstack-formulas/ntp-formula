@@ -1,4 +1,13 @@
 {% set map = {
+    'Arch': {
+        'client': 'ntp',
+        'server': 'ntp',
+        'service': 'ntpd',
+        'ntpdate': 'ntpdate',
+
+        'ntp_conf': '/etc/ntp.conf',
+        'ntpd_conf': '/etc/ntpd.conf',
+    },
     'Debian': {
         'client': 'ntp',
         'server': 'ntpd',
