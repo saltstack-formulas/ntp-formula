@@ -65,14 +65,14 @@ ntp:
       # A dictionary of lists, each key corresponds to a conf-file directive in
       # ntp.conf. Eg, the below will compile to:
       #
-      #     servers 0.us.pool.ntp.org
-      #     servers 1.us.pool.ntp.org
+      #     server 0.us.pool.ntp.org
+      #     server 1.us.pool.ntp.org
       #
       #     restrict 127.0.0.1
       #     restrict ::1
       #
       #     driftile: /var/lib/ntp/ntp.drift
       ntp_conf:
-        servers: ['0.us.pool.ntp.org', '1.us.pool.ntp.org']
+        server: ['0.us.pool.ntp.org', '1.us.pool.ntp.org']
         restrict: ['127.0.0.1', '::1']
         driftfile: ['/var/lib/ntp/ntp.drift']
