@@ -56,6 +56,7 @@ ntp:
     lookup:
       package: ntp
       service: ntpd
+      provider: systemd
       ntp_conf: /etc/ntp.conf
     # State-specific options
     settings:
