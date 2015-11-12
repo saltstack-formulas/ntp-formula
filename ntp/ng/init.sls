@@ -28,6 +28,9 @@ ntpd:
   service.{{ service.get(ntp.settings.ntpd) }}:
     - name: {{ ntp.lookup.service }}
     - enable: {{ ntp.settings.ntpd }}
+    {% if 'provider' in ntp.lookup %}
+    - provider: {{ ntp.lookup.provider }}
+    {% endif %}
     {% if 'package' in ntp.lookup %}
     - require:
       - pkg: ntp
