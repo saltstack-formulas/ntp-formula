@@ -15,5 +15,14 @@ ntp_conf:
     - template: jinja
     - source: {{ ntp_conf_src }}
     - require:
-      - pkg: ntp
+      - pkg: {{ ntp.client }}
 {% endif %}
+
+{% if ntp.ntp_conf -%}
+ntp_running:
+  service.running:
+    - name: {{ ntp.service }}
+    - enable: True
+    - watch:
+      - file: {{ ntp.ntp_conf }}
+{% endif -%}
