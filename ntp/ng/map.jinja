@@ -21,7 +21,7 @@
         },
         'Suse': {
             'package': 'ntp',
-            'service': 'ntpd',
+            'service': 'ntp' if salt['grains.get']('osrelease').startswith('11') else 'ntpd',
             'ntp_conf': '/etc/ntp.conf'
         },
         'FreeBSD': {
