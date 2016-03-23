@@ -29,7 +29,11 @@
     'Suse': {
         'client': 'ntp',
         'server': 'ntp',
+        {% if salt['grains.get']('osrelease').startswith('11') %}
+        'service': 'ntp'
+        {% else %}
         'service': 'ntpd',
+        {% endif %}
         'ntpdate': 'ntpdate',
 
         'ntp_conf': '/etc/ntp.conf',
