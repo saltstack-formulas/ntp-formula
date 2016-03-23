@@ -1,9 +1,3 @@
-{% if grains.get('osrelease', '').startswith('11') %}
-{% set suseservice =  'ntp' %}
-{% else %}
-{% set suseservice = 'ntpd' %}
-{% endif %}
-
 {% set map = {
     'Arch': {
         'client': 'ntp',
@@ -35,7 +29,11 @@
     'Suse': {
         'client': 'ntp',
         'server': 'ntp',
-        'service': suseservice,
+        'service': salt['grains.filter_by']({
+            '11.3': 'ntp',
+            '11.4': 'ntp',
+            'default': 'ntpd',
+        }, grain='osrelease'),
         'ntpdate': 'ntpdate',
 
         'ntp_conf': '/etc/ntp.conf',
