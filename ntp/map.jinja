@@ -1,3 +1,9 @@
+{% if grains.get('osrelease', '').startswith('11') %}
+{% set suseservice =  'ntp' %}
+{% else %}
+{% set suseservice = 'ntpd' %}
+{% endif %}
+
 {% set map = {
     'Arch': {
         'client': 'ntp',
@@ -29,11 +35,7 @@
     'Suse': {
         'client': 'ntp',
         'server': 'ntp',
-        {% if salt['grains.get']('osrelease').startswith('11') %}
-        'service': 'ntp'
-        {% else %}
-        'service': 'ntpd',
-        {% endif %}
+        'service': suseservice,
         'ntpdate': 'ntpdate',
 
         'ntp_conf': '/etc/ntp.conf',
