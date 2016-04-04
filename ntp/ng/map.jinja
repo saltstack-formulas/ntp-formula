@@ -21,7 +21,11 @@
         },
         'Suse': {
             'package': 'ntp',
-            'service': 'ntpd',
+            'service': salt['grains.filter_by']({
+                '11.3': 'ntp',
+                '11.4': 'ntp',
+                'default': 'ntpd',
+            }, grain='osrelease'),
             'ntp_conf': '/etc/ntp.conf'
         },
         'FreeBSD': {
