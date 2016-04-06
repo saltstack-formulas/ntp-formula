@@ -2,7 +2,7 @@
 # file paths. Values can be overridden using Pillar.
 {% from "ntp/map.jinja" import ntp with context %}
 
-ntp:
+{{ ntp.client }}:
   pkg.installed:
     - name: {{ ntp.client }}
 
@@ -24,5 +24,5 @@ ntp_running:
     - name: {{ ntp.service }}
     - enable: True
     - watch:
-      - file: {{ ntp.ntp_conf }}
+      - file: ntp_conf
 {% endif -%}
