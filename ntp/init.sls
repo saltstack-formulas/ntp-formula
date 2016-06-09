@@ -9,6 +9,8 @@ ntp:
 {% set ntp_conf_src = salt['pillar.get']('ntp:ntp_conf') -%}
 
 {% if ntp_conf_src %}
+{% else %}
+{% set ntp_conf_src = 'salt://ntp/ntp.conf' %}
 ntp_conf:
   file.managed:
     - name: {{ ntp.ntp_conf }}
