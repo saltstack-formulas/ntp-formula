@@ -6,7 +6,7 @@ ntp:
   pkg.installed:
     - name: {{ ntp.client }}
 
-{% set ntp_conf_src = salt['pillar.get']('ntp:ntp_conf') -%}
+{% set ntp_conf_src = salt['pillar.get']('ntp:ntp_conf', 'salt://ntp/ntp.conf') -%}
 
 {% if ntp_conf_src %}
 ntp_conf:
