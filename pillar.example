@@ -53,6 +53,11 @@ ntp:
   ng:
     # OS-specific data that should, in most cases, be handled by map.jinja.
     # It is an optional key and is only used to override defaults.
+    service:
+      # overrides daemon startup options
+      options: -p 2
+      retries: 2
+      sync_hwclock: False
     lookup:
       package: ntp
       service: ntpd
@@ -60,6 +65,8 @@ ntp:
       ntp_conf: /etc/ntp.conf
     # State-specific options
     settings:
+		  # if `yes`, set flags to update the hardware after sync
+			sync_hwclock: no
       # If `True`, ntpd will be enabled. Otherwise ntp.conf will be configured
       # but ntpd will not be enabled or started.
       ntpd: True

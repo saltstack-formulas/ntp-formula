@@ -40,3 +40,22 @@ ntpd:
     - watch:
       - file: ntpd_conf
 {% endif %}
+
+{#% if 'defaults' in ntp.lookup %#}
+ntpd_defaults:
+  file.managed:
+    - name: {{ ntp.lookup.defaults }}
+    - user: root
+    - group: root
+    - mode: 0664
+    - contents: |
+        # Options for ntpdate
+        OPTIONS="{{ ntp.service.options }}"
+
+        # Number of retries before giving up
+        RETRIES={{ ntp.service.retries }}
+
+        # Set to 'yes' to sync hw clock after successful ntpdate
+        SYNC_HWCLOCK={{ ntp.service.sync_hwclock }}
+        
+{#% endif %#}
