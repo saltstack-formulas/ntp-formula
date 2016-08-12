@@ -53,7 +53,7 @@ ntp:
   ng:
     # OS-specific data that should, in most cases, be handled by map.jinja.
     # It is an optional key and is only used to override defaults.
-    daemon:
+    service:
       # overrides daemon startup options
       options: -p 2
       retries: 2
