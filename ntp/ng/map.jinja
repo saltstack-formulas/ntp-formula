@@ -17,7 +17,8 @@
         'RedHat': {
             'package': 'ntp',
             'service': 'ntpd',
-            'ntp_conf': '/etc/ntp.conf'
+            'ntp_conf': '/etc/ntp.conf',
+						'defaults': '/etc/sysconfig/ntpdate'
         },
         'Suse': {
             'package': 'ntp',
@@ -40,6 +41,13 @@
             'restrict': ['default noquery nopeer', '127.0.0.1', '::1'],
             'driftfile': [ default_driftfile ]
         }
+		}),
+		'service': { 'options': '-p 2',
+				         'retries': '2',
+				         'sync_hwclock': 'no',
+		           }
 
-    })
-} %}
+    }
+ %}
+
+{% do ntp.service.update( salt['pillar.get']('ntp:ng:service', {})) %}
