@@ -30,6 +30,9 @@ ntpd:
   service.{{ service.get(ntp.settings.ntpd) }}:
     - name: {{ ntp.lookup.service }}
     - enable: {{ ntp.settings.ntpd }}
+    {%- if 'init_delay' in ntp.settings %}
+    - init_delay: {{ ntp.settings.init_delay }}
+    {% endif %}
     {% if 'provider' in ntp.lookup %}
     - provider: {{ ntp.lookup.provider }}
     {% endif %}
