@@ -63,6 +63,8 @@ ntp:
       # If `True`, ntpd will be enabled. Otherwise ntp.conf will be configured
       # but ntpd will not be enabled or started.
       ntpd: True
+      # init_delay is used to wait for X seconds for service start
+      init_delay: 5
       # A dictionary of lists, each key corresponds to a conf-file directive in
       # ntp.conf. Eg, the below will compile to:
       #
