@@ -22,7 +22,7 @@ ntp:
   ### Assign NTP Servers Based On Environment ###
   # Internal NTP Servers Get Data From Outside #
   {% if grains['id'].startswith('nameofyourntpserver') %}
-  ntpservers: ["0.us.pool.ntp.org","1.us.pool.ntp.org","2.us.pool.ntp.org","3.us.pool.ntp.org"]
+  servers: ["0.us.pool.ntp.org","1.us.pool.ntp.org","2.us.pool.ntp.org","3.us.pool.ntp.org"]
   comment: ''
 
   # If This Is Production #
@@ -40,9 +40,9 @@ ntp:
 
   # Assign Local Box NTP Server Based On Environment
   {% if grains['environment'] == 'production' %}
-  ntpservers: ["10.1.1.20","10.1.1.21"]
+  servers: ["10.1.1.20","10.1.1.21"]
   {% else %}
-  ntpservers: ["10.1.4.20"]
+  servers: ["10.1.4.20"]
   {% endif %}
 
   {% endif %}
