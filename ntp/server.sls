@@ -3,6 +3,7 @@
 include:
   - ntp
 
+{% set ntp_conf_src  = salt['pillar.get']('ntp:ntp_conf') -%}
 {% set ntpd_conf_src = salt['pillar.get']('ntp:ntpd_conf') -%}
 
 {% if ntpd_conf_src %}
@@ -20,7 +21,12 @@ ntpd:
     - enable: True
     - require:
       - pkg: ntp
-{% if ntpd_conf_src %}
+{%- if ntpd_conf_src or ntp_conf_src %}
     - watch:
+{%- if ntpd_conf_src %}
       - file: ntpd_conf
-{% endif %}
+{%- endif %}
+{%- if ntp.ntp_conf %}
+      - file: ntp_conf_src
+{%- endif %}
+{%- endif %}
