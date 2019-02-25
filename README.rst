@@ -28,7 +28,7 @@ Installs the ntp server, an optional server config, and starts the ntp server.
 ``ntp.local_server``
 --------------------
 
-This forumula uses pillar data to determine if the server is an internal NTP
+This formula uses pillar data to determine if the server is an internal NTP
 server or a local server that syncs to the internal NTP server and will write
 the ntp.conf file accordingly.
 
