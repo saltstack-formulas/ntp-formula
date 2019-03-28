@@ -16,7 +16,7 @@ ntpd_conf:
     - source: salt://ntp/ng/files/ntp.conf
     - template: jinja
     - context:
-      config: {{ ntp.settings.ntp_conf }}
+      config: {{ ntp.settings.ntp_conf|json }}
     - watch_in:
       - service: {{ ntp.lookup.service }}
     {% if 'package' in ntp.lookup %}
