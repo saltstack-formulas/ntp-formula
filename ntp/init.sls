@@ -5,6 +5,11 @@
 ntp:
   pkg.installed:
     - name: {{ ntp.client }}
+  service.running:
+    - name: {{ ntp.service }}
+    - enable: True
+    - require:
+      - pkg: {{ ntp.client }}
 
 {% set ntp_conf_src = salt['pillar.get']('ntp:ntp_conf', 'salt://ntp/ntp.conf') -%}
 
@@ -16,5 +21,6 @@ ntp_conf:
     - source: {{ ntp_conf_src }}
     - require:
       - pkg: {{ ntp.client }}
+    - watch_in:
+      - service: {{ ntp.service }}
 {%- endif %}
-
