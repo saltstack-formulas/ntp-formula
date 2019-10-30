@@ -26,8 +26,14 @@ ntpd_conf:
 {% endif %}
 
 {% if 'ntpd' in ntp.settings %}
+{%   set service_state = service.get(ntp.settings.ntpd) %}
+{#   Do not attempt to run the service in a container where the service is configured with #}
+{#   `ConditionVirtualization=!container` or similar (e.g. via. `kitchen-salt`) #}
+{%   if grains.os_family in ['Suse'] and salt['config.get']('virtual_subtype', '') in ['Docker'] %}
+{%     set service_state = 'dead' %}
+{%   endif %}
 ntpd:
-  service.{{ service.get(ntp.settings.ntpd) }}:
+  service.{{ service_state }}:
     - name: {{ ntp.lookup.service }}
     - enable: {{ ntp.settings.ntpd }}
     {%- if 'init_delay' in ntp.settings %}
