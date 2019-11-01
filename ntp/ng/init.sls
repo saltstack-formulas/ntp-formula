@@ -29,7 +29,8 @@ ntpd_conf:
 {%   set service_state = service.get(ntp.settings.ntpd) %}
 {#   Do not attempt to run the service in a container where the service is configured with #}
 {#   `ConditionVirtualization=!container` or similar (e.g. via. `kitchen-salt`) #}
-{%   if grains.os_family in ['Suse'] and salt['config.get']('virtual_subtype', '') in ['Docker'] %}
+{%   if grains.os_family in ['Suse'] and
+        salt['grains.get']('virtual_subtype', '') in ['Docker', 'LXC', 'kubernetes', 'libpod'] %}
 {%     set service_state = 'dead' %}
 {%   endif %}
 ntpd:
