@@ -34,7 +34,7 @@ jobs:
         # Install and run `salt-lint`
         - pip install --user salt-lint
         - git ls-files | grep '\.sls$\|\.jinja$\|\.j2$\|\.tmpl$\|\.tst$'
-                       | xargs -I {} salt-lint {}
+                       | xargs salt-lint
         # Install and run `yamllint`
         # Need at least `v1.17.0` for the `yaml-files` setting
         - pip install --user yamllint>=1.17.0
@@ -63,8 +63,8 @@ jobs:
     # - env: INSTANCE=default-centos-8-2019-2-py3
     # - env: INSTANCE=default-fedora-31-2019-2-py3
     - env: INSTANCE=default-opensuse-leap-151-2019-2-py3
-    - env: INSTANCE=default-amazonlinux-2-2019-2-py2
     # - env: INSTANCE=default-centos-7-2019-2-py2
+    - env: INSTANCE=default-amazonlinux-2-2019-2-py2
     # - env: INSTANCE=default-arch-base-latest-2019-2-py2
     - env: INSTANCE=default-fedora-30-2018-3-py3
     # - env: INSTANCE=default-debian-9-2018-3-py2
