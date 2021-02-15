@@ -32,6 +32,11 @@
             'service': 'ntpd',
             'ntp_conf': '/etc/ntp.conf'
         },
+        'Gentoo': {
+            'package': ' net-misc/ntp',
+            'service': 'ntpd',
+            'ntp_conf': '/etc/ntp.conf'
+        },
     }, merge=salt['pillar.get']('ntp:ng:lookup')),
     'settings': salt['pillar.get']('ntp:ng:settings', {
         'ntpd': False,
