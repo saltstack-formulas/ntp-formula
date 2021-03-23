@@ -312,6 +312,7 @@ suites:
       state_top:
         base:
           '*':
+            - ntp.ng._mapdata
             - ntp.ng
       pillars:
         top.sls:
