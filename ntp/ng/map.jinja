@@ -33,7 +33,7 @@
             'ntp_conf': '/etc/ntp.conf'
         },
         'Gentoo': {
-            'package': ' net-misc/ntp',
+            'package': 'net-misc/ntp',
             'service': 'ntpd',
             'ntp_conf': '/etc/ntp.conf'
         },
@@ -47,3 +47,8 @@
         }
     }, merge=True)
 } %}
+{#- Overwriting the `lookup` value isn't good practice but this is a
+    temporary fix until a newer `map.jinja` can be introduced #}
+{%- if grains.get("osfinger", "") == "Fedora-34" %}
+{%-   do ntp.lookup.update({"package": "ntpsec"}) %}
+{%- endif %}
