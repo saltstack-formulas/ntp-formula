@@ -347,11 +347,16 @@ verifier:
 suites:
   - name: default
     provisioner:
+      dependencies:
+        - name: states
+          path: ./test/salt
       state_top:
         base:
           '*':
             - ntp.ng._mapdata
             - ntp.ng
+          'G@init:systemd and ( G@os:SUSE )':
+            - states.custom_systemd_service
       pillars:
         top.sls:
           base:
