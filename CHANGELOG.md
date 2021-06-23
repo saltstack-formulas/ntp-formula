@@ -1,5 +1,37 @@
 # Changelog
 
+# [0.20.0](https://github.com/saltstack-formulas/ntp-formula/compare/v0.19.2...v0.20.0) (2021-06-23)
+
+
+### Continuous Integration
+
+* **kitchen+gitlab:** remove Ubuntu 16.04 & Fedora 32 (EOL) [skip ci] ([c65152e](https://github.com/saltstack-formulas/ntp-formula/commit/c65152ec3092174823efc0eece352d21ad20ca4b))
+* add `arch-master` to matrix and update `.travis.yml` [skip ci] ([4ce7361](https://github.com/saltstack-formulas/ntp-formula/commit/4ce73614b619db52e59f37d106b447117e098d3a))
+* **commitlint:** ensure `upstream/master` uses main repo URL [skip ci] ([406efce](https://github.com/saltstack-formulas/ntp-formula/commit/406efceff01bcbc3616ca3f2d13b3c5d67a7776d))
+* **gemfile+lock:** use `ssf` customised `kitchen-docker` repo [skip ci] ([ea5fd3e](https://github.com/saltstack-formulas/ntp-formula/commit/ea5fd3e26373ad194145efa0257cdd7775c66486))
+* **gitlab-ci:** add `rubocop` linter (with `allow_failure`) [skip ci] ([00a5fc2](https://github.com/saltstack-formulas/ntp-formula/commit/00a5fc22fb0e0445114507fe3ef5bc190d3ab99b))
+* **kitchen+ci:** use latest pre-salted images (after CVE) [skip ci] ([59c1654](https://github.com/saltstack-formulas/ntp-formula/commit/59c1654c2eda3978af1a60bdf1faf4857bc75c07))
+* **kitchen+gitlab:** adjust matrix to add `3003` [skip ci] ([e730fd3](https://github.com/saltstack-formulas/ntp-formula/commit/e730fd3fdcc7957cd1259e40ec3665585e348a10))
+* **kitchen+gitlab-ci:** use latest pre-salted images [skip ci] ([b450464](https://github.com/saltstack-formulas/ntp-formula/commit/b4504642be9638bbad2f3c1e9a7407271a4ee99b))
+* **pre-commit:** update hook for `rubocop` [skip ci] ([ea14cbb](https://github.com/saltstack-formulas/ntp-formula/commit/ea14cbbad71803b5c1a33d95e9aa324b09d40d6a))
+
+
+### Features
+
+* **map.jinja:** specify package for Fedora 34 ([0616c83](https://github.com/saltstack-formulas/ntp-formula/commit/0616c8340298b9cc3cdb8ef7b00d1ca02e23bf35))
+* **ng/map:** add configuration for Gentoo ([fa2f8bb](https://github.com/saltstack-formulas/ntp-formula/commit/fa2f8bbafd040dc400d24baf21cd3190fcb7836d))
+
+
+### Reverts
+
+* **container:** respect `ConditionVirtualization` service setting ([28c27c1](https://github.com/saltstack-formulas/ntp-formula/commit/28c27c1bec74787f3fa3b1966e762e8012243373))
+
+
+### Tests
+
+* **service:** add helper state to run service in containers ([2bdc85c](https://github.com/saltstack-formulas/ntp-formula/commit/2bdc85c41a16f3f4bbb4b8df05e0589457ef754c))
+* standardise use of `share` suite & `_mapdata` state [skip ci] ([a23eff8](https://github.com/saltstack-formulas/ntp-formula/commit/a23eff88df9e5bc63b7dd464381c1f01add70106))
+
 ## [0.19.2](https://github.com/saltstack-formulas/ntp-formula/compare/v0.19.1...v0.19.2) (2020-12-16)
 
 
