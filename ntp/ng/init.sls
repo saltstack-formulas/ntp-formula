@@ -26,6 +26,7 @@ ntpd_conf:
 {% endif %}
 
 {% if 'ntpd' in ntp.settings %}
+{% if ntp.settings.ntpd %}
 ntpd:
   service.{{ service.get(ntp.settings.ntpd) }}:
     - name: {{ ntp.lookup.service }}
@@ -42,4 +43,5 @@ ntpd:
     {% endif %}
     - watch:
       - file: ntpd_conf
+{% endif %}
 {% endif %}
