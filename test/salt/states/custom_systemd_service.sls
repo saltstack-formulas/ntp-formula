@@ -17,11 +17,11 @@ test-salt-states-custom-systemd-service-file-replace:
     - require:
       - file: ntpd_conf
 
-test-salt-states-custom-systemd-service-cmd-wait:
-  cmd.wait:
+test-salt-states-custom-systemd-service-cmd-run:
+  cmd.run:
     - name: systemctl daemon-reload
     - runas: root
-    - watch:
+    - onchanges:
       - file: test-salt-states-custom-systemd-service-file-replace
     - require_in:
       - service: ntpd
