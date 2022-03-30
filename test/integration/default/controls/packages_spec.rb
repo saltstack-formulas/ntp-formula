@@ -2,7 +2,7 @@
 
 pkg =
   case system.platform[:finger]
-  when 'fedora-34'
+  when 'fedora-34', 'fedora-35'
     'ntpsec'
   else
     'ntp'

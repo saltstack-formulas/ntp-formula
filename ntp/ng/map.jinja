@@ -49,6 +49,6 @@
 } %}
 {#- Overwriting the `lookup` value isn't good practice but this is a
     temporary fix until a newer `map.jinja` can be introduced #}
-{%- if grains.get("osfinger", "") == "Fedora-34" %}
+{%- if grains.get("osfinger", "") in ["Fedora-34", "Fedora Linux-35"] %}
 {%-   do ntp.lookup.update({"package": "ntpsec"}) %}
 {%- endif %}
