@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 pkg =
-  case system.platform[:finger]
-  when 'fedora-34', 'fedora-35'
+  case system.platform[:name]
+  when 'fedora'
     'ntpsec'
   else
     'ntp'
